@@ -14,32 +14,28 @@ public class cursethedarkness {
             xBook = kb.nextDouble();
             yBook = kb.nextDouble();
             candles = kb.nextInt();
-                for(int j = 0; j < candles; ++j) {
-                    xCandle = kb.nextDouble();
-                    yCandle = kb.nextDouble();
+            for(int j = 0; j < candles; ++j) {
+                xCandle = kb.nextDouble();
+                yCandle = kb.nextDouble();
                     
 
-                    if(getDistance(xBook, xCandle, yBook, yCandle) <= 8) {
-                        light = true;
-                    }
+                if(getDistance(xBook, xCandle, yBook, yCandle) <= 8) {
+                    light = true;
                 }
+            }
             if(light == true) {
                 System.out.println("light a candle");
             }
             else {
                 System.out.println("curse the darkness");
             }
-
         }
-
-
-
     }
+    
     public static double getDistance(double x1, double x2, double y1, double y2) {
         double distance = 0.0;
         distance = Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
 
         return distance;
     }
-
 }
