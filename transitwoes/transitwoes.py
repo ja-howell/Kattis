@@ -1,31 +1,18 @@
 
 def main():
-    s, t, n = input().split()
-    s = int(s)
-    t = int(t)
-    n = int(n)
-
-    walkingtime = []
-    tempwalktime = input().split()
-    for walk in tempwalktime:
-        walkingtime.append(int(walk))
-
-    busride = [] 
-    tempbustime = input().split()
-    for bustime in tempbustime:
-        busride.append(int(bustime))
-
-    busintervals = []    
-    tempintervals = input().split()
-    for interval in tempintervals:
-        busintervals.append(int(interval))
+    s, t, n = [int(x) for x in input().split()]
+    walkingtime = [int(x) for x in input().split()]
+    busride = [int(x) for x in input().split()] 
+    busintervals = [int(x) for x in input().split()]    
 
     s += walkingtime[0]
 
     for l in range(n):
-        while busintervals[l] < s:
-            busintervals[l] += busintervals[l]
-        s += (busintervals[l] - s)
+        lastbus = s % busintervals[l]
+        waitingtime = 0
+        if lastbus != 0:
+            waitingtime = busintervals[l] - lastbus
+        s += waitingtime
         s += walkingtime[l+1]   
 
     if s < t:
